@@ -1,0 +1,8 @@
+#!/bin/bash
+
+display () {
+    tput setab 0
+    echo "hello colrput"
+}
+
+display
