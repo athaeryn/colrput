@@ -1,8 +1,60 @@
 #!/bin/bash
 
+if [ "$1"="-e" ]; then
+    expanded=true;
+else
+    expanded=false
+fi
+
+row () {
+    width=$(($1 - 2))
+    start=$2
+    end=$3
+
+    slice () {
+        for ((i=$start; i<=$end; i++))
+        do
+            if [ $1 ]; then string=$i; else string=' '; fi
+            tput setab $i
+            printf "%${width}s " $string
+        done
+        tput sgr0
+        echo
+    }
+
+    if [ $expanded ]; then
+        slice; slice true; slice
+    else
+        slice true
+    fi
+}
+
 display () {
-    tput setab 0
-    echo "hello colrput"
+    cols=$(tput cols)
+    sixth=$(($cols/6))
+    twelfth=$(($cols/12))
+    eighth=$(($cols/8))
+
+    echo #------------------------------
+
+    row $eighth 0 7
+    row $eighth 8 15
+
+    echo #------------------------------
+
+    for ((a=1; a<=35; a++))
+    do
+        row $sixth $((16 + (6 * a))) $((21 + (6 * a)))
+    done
+
+    echo #------------------------------
+
+    row $twelfth 232 243
+    tput setaf 0
+    row $twelfth 244 255
+
+    tput sgr0
 }
 
 display
+
