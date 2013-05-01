@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ "$1"="-e" ]; then
+if [ "$1" == "-e" ]; then
     expanded=true;
 else
     expanded=false
@@ -22,7 +22,7 @@ row () {
         echo
     }
 
-    if [ $expanded ]; then
+    if [ $expanded == true ]; then
         slice; slice true; slice
     else
         slice true
