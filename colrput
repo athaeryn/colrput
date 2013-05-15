@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # If the '-e' flag is passed, cells will be three rows high.
 if [ "$1" == "-e" ]; then
