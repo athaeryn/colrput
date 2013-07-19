@@ -68,7 +68,7 @@ display () {
     echo
 
     # 16-231.
-    for ((a=1; a<=35; a++))
+    for ((a=0; a<=35; a++))
     do
         row $sixth $((16 + (6 * a))) $((21 + (6 * a)))
     done
