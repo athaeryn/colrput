@@ -7,6 +7,13 @@ else
     expanded=false
 fi
 
+# If the option --sixteen is given, only show the first 16 colors
+if [ "$1" == "--sixteen" ]; then
+    showall=true;
+else
+    showall=false
+fi
+
 # Creates a color row.
 # Arguments:
 #   - width (number)
@@ -66,6 +73,10 @@ display () {
     row $eighth 0 7
     row $eighth 8 15
     echo
+
+    if [ !$showall ]; then
+        exit
+    fi
 
     # 16-231.
     for ((a=0; a<=35; a++))
