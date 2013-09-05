@@ -8,10 +8,12 @@ else
 fi
 
 # If the option --sixteen is given, only show the first 16 colors
-if [ "$1" == "--sixteen" ]; then
+if [ "$1" == "-16" ]; then
     showall=true;
+    sixteen=true;
+    expanded=true;
 else
-    showall=false
+    sixteen=false
 fi
 
 # Creates a color row.
@@ -74,7 +76,7 @@ display () {
     row $eighth 8 15
     echo
 
-    if [ !$showall ]; then
+    if [ $sixteen == true ]; then
         exit
     fi
 
